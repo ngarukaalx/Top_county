@@ -4,12 +4,21 @@ atribute of all class
 """
 import uuid
 from datetime import datetime
+import sqlalchemy
+import models
+from sqlalchemy import Column, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel:
     """Defines all common atributes"""
+    id = Column(String(60), primary_key=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
         """initialize the BaseModel instance with id and timestamps"""
@@ -42,7 +51,12 @@ class BaseModel:
     def save(self):
         """updates the public instance atribute with current datetime"""
         self.updated_at = datetime.utcnow()
+        models.storage.new(self)
+        models.storage.save()
 
+    def delete(self):
+        """deletes the current instance from storage"""
+        models.storage.delete(self)
 
     def to_dict(self):
         """returns a dictionary containing all keys/value of __dict_ instance"""
@@ -54,5 +68,11 @@ class BaseModel:
             instance_dict["updated_at"] = instance_dict["updated_at"].strftime(time)
 
         instance_dict["__class__"] = self.__class__.__name__
+
+        # removes _sa_instance_state from dict if it exists
+        if '_sa_instance_state' in instance_dict:
+            del instance_dict["_sa_instance_state"]
+        if "password" in instance_dict:
+            del instance_dict["password"]
 
         return instance_dict
