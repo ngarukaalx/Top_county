@@ -1,0 +1,223 @@
+/* styling the nav */
+
+#nav {
+    background-color: black;
+    border: none;
+}
+#nav .navbar-brand,
+#nav .navbar-nav > li > a {
+    color: white;
+}
+#nav .navbar-toggle {
+    border: none;
+}
+#nav .navbar-toggle .icon-bar {
+    background-color: white;
+}
+#nav .navbar-toggle:hover,
+#nav .navbar-toggle:focus {
+    background-color: transparent;
+}
+#nav .navbar-collapse {
+    border-color: transparent;
+}
+#nav .navbar-nav > li > a:hover,
+#nav .navbar-nav > li > a:focus {
+    background-color: transparent;
+}
+
+/* style the image profile and message section */
+.user-details {
+    margin-top: 7%;
+}
+.profile-header {
+    text-align: center;
+    margin-top: 20px;
+}
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.tabs {
+    margin-top: 20px;
+}
+.tab-content {
+    margin-top: 20px;
+}
+.message-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.message-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.message-item:hover {
+    background-color: #f9f9f9;
+}
+.message-item:last-child {
+    border-bottom: none;
+}
+.conversation-section {
+    display: none;
+    margin-top: 20px;
+}
+.conversation-header {
+    display: flex;
+    align-items: center;
+}
+.conversation-header img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.conversation-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+.conversation-messages p {
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* style the info section */
+#btn-drp {
+    margin-bottom: 15px;
+}
+.county-info {
+    border: 3px solid whitesmoke;
+    margin-top: 10%;
+    margin-bottom: 15px;
+}
+#head h4 {
+    font-weight: bold;
+}
+#name-county h4 {
+    font-weight: bold;
+}
+.profile-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes it circular */
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the block element */
+}
+.custom-container {
+    margin-top: 20px;
+}
+.search-form {
+    margin: 0 auto; /* Center the search form */
+}
+#home-btn,
+#video-btn {
+    color: rgb(14, 14, 48);
+}
+.active-icon {
+    color: red;
+}
+
+
+
+/* post stuffs*/
+#mypost {
+    background-color: #ffffff; /* Bright white background  */
+    border-color: #e7e7e7; /* Light gray border */
+    font-family: Arial, sans-serif;
+    margin-bottom: 15px;
+    padding: 0;
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 5px solid whitesmoke; /* Light gray border */
+    border-radius: 7px;
+}
+
+#mypost .edit-icon,
+#mypost .delete-icon {
+    position: absolute;
+    cursor: pointer;
+}
+
+#pro {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+#profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+#details {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+#details h6 {
+    font-size: large;
+    font-weight: bold;
+}
+#status {
+    color: gold; /* Example color, change based on governor status */
+    font-size: 1.5rem;
+}
+.post-content {
+    margin-bottom: 15px;
+}
+.post-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.post-actions {
+    margin-top: 15px;
+}
+.delete-conv {
+    margin-left: 60px;
+}
+
+
+/* footer */
+.footer {
+    background-color: #000000; /* Black background */
+    padding: 20px 0;
+    color: #ffffff; /* White text color */
+    margin-top: 50px;
+}
+.footer .footer-column {
+    margin-bottom: 20px;
+}
+.footer .footer-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff; /* White text color */
+}
+.footer .footer-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+#social{
+    color: #ffffff;
+}
+.footer .footer-link:hover {
+    text-decoration: underline;
+}
+.footer .social-icons {
+    margin-top: 10px;
+}
+.footer .social-icons a {
+    margin-right: 10px;
+    color: #ffffff;
+}

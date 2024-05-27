@@ -1,0 +1,181 @@
+/* style the navbar */
+.navbar-custom {
+    background-color: black;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .navbar-toggle .icon-bar {
+    color: white;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+    background-color: white;
+}
+.navbar-custom .nav-link:hover,
+.navbar-custom .navbar-brand:hover {
+    color: #ddd;
+}
+.navbar-custom .navbar-toggler {
+    border-color: white;
+    color: white;
+}
+.navbar-custom .navbar-toggler .navbar-toggler-icon {
+    background-color: white;
+}
+#sp {
+    background-color: white;
+}
+
+/* Login styles */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    margin-top: 5%;
+    padding-top: 15px;
+    border-radius: 5px;
+}
+.login-box {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.info-box {
+    padding: 2rem;
+}
+.btn-black {
+    background-color: black;
+    color: white;
+}
+.btn-black:hover {
+    background-color: #333;
+    color: white;
+}
+.signup-link {
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+/* styling the  singup first step*/
+
+
+.signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup-box {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    position: relative;
+}
+.btn-black {
+    background-color: black;
+    color: white;
+}
+.btn-black:hover {
+    background-color: #333;
+    color: white;
+}
+.signup-link {
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+    color: black;
+}
+.next-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* styling the next singup form */
+.signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup-box {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    position: relative;
+}
+.btn-black {
+    background-color: black;
+    color: white;
+}
+.btn-black:hover {
+    background-color: #333;
+    color: white;
+}
+.signup-link {
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+    color: black;
+}
+.next-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.form-group label {
+    font-size: 0.9rem; /* Smaller label text */
+}
+.form-control {
+    font-size: 0.9rem; /* Smaller input text */
+}
+
+
+/* footer */
+.footer {
+    background-color: #000000; /* Black background */
+    padding: 20px 0;
+    color: #ffffff; /* White text color */
+    margin-top: 50px;
+}
+.footer .footer-column {
+    margin-bottom: 20px;
+}
+.footer .footer-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff; /* White text color */
+}
+.footer .footer-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+#social{
+    color: #ffffff;
+}
+.footer .footer-link:hover {
+    text-decoration: underline;
+}
+.footer .social-icons {
+    margin-top: 10px;
+}
+.footer .social-icons a {
+    margin-right: 10px;
+    color: #ffffff;
+}

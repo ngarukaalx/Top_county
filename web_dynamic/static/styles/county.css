@@ -1,0 +1,152 @@
+/* styling the nav */
+
+#nav {
+    background-color: black;
+    border: none;
+}
+#nav .navbar-brand,
+#nav .navbar-nav > li > a {
+    color: white;
+}
+#nav .navbar-toggle {
+    border: none;
+}
+#nav .navbar-toggle .icon-bar {
+    background-color: white;
+}
+#nav .navbar-toggle:hover,
+#nav .navbar-toggle:focus {
+    background-color: transparent;
+}
+#nav .navbar-collapse {
+    border-color: transparent;
+}
+#nav .navbar-nav > li > a:hover,
+#nav .navbar-nav > li > a:focus {
+    background-color: transparent;
+}
+
+/* style the info section */
+#btn-drp {
+    margin-bottom: 15px;
+}
+.county-info {
+    border: 3px solid whitesmoke;
+    margin-top: 10%;
+    margin-bottom: 15px;
+}
+#head h4 {
+    font-weight: bold;
+}
+#name-county h4 {
+    font-weight: bold;
+}
+.profile-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes it circular */
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the block element */
+}
+.custom-container {
+    margin-top: 20px;
+}
+.search-form {
+    margin: 0 auto; /* Center the search form */
+}
+#home-btn,
+#video-btn {
+    color: rgb(14, 14, 48);
+}
+.active-icon {
+    color: red;
+}
+
+/* post stuffs*/
+#mypost {
+    background-color: #ffffff; /* Bright white background  */
+    border-color: #e7e7e7; /* Light gray border */
+    font-family: Arial, sans-serif;
+    margin-bottom: 15px;
+    padding: 0;
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 5px solid whitesmoke; /* Light gray border */
+    border-radius: 7px;
+}
+.rmv {
+    font-size: x-small;
+    color: gray;
+    cursor: pointer;
+}
+
+#pro {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+#profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+#details {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+#details h6 {
+    font-size: large;
+    font-weight: bold;
+}
+#status {
+    color: gold; /* Example color, change based on governor status */
+    font-size: 1.5rem;
+}
+.post-content {
+    margin-bottom: 15px;
+}
+.post-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.post-actions {
+    margin-top: 15px;
+}
+
+
+/* footer */
+.footer {
+    background-color: #000000; /* Black background */
+    padding: 20px 0;
+    color: #ffffff; /* White text color */
+    margin-top: 50px;
+}
+.footer .footer-column {
+    margin-bottom: 20px;
+}
+.footer .footer-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff; /* White text color */
+}
+.footer .footer-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+#social{
+    color: #ffffff;
+}
+.footer .footer-link:hover {
+    text-decoration: underline;
+}
+.footer .social-icons {
+    margin-top: 10px;
+}
+.footer .social-icons a {
+    margin-right: 10px;
+    color: #ffffff;
+}
