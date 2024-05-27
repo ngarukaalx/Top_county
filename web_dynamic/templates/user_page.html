@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!--style shheets-->
+        <link rel="stylesheet" href="assets/styles/user.css">
+        <!--link to js scrips-->
+        <script type="text/javascript" src="scripts/county_0.js"></script>
+        <script type="text/javascript" src="scripts/county_1.js"></script>
+        <title>TopCounty</title>
+    </head>
+    <body>
+        <!--navbar fixed and collapsible-->
+        <nav class="navbar navbar-fixed-top" id="nav">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">TopCounty..</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+        <div class="container user-details">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <img src="assets/images/logo.jpg" class="profile-photo img-responsive" alt="Profile Image">
+                <h2>Hiram Kabuagi</h2>
+                <p>Governor of Trans-Nzoia</p>
+            </div>
+        
+            <!-- Tabs -->
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
+                    <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                </ul>
+            </div>
+        
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="posts">
+                    <h3>MY Posts</h3>
+                    <!-- link to switch video and image -->
+                    <section class="container custom-container">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="icon-link" id="home-btn"><span class="glyphicon glyphicon-home"></span></a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" class="icon-link" id="video-btn"><span class="glyphicon glyphicon-facetime-video"></span></a>
+                            </div>
+                        </div>
+                    </section> 
+                    <!-- Image posts -->
+                    <section class="container" id="image">
+                        <div class="row">
+                            <section class="col-lg-4 col-md-5" id="mypost">
+                                <div class="row" id="profile">
+                                    <div class="col-xs-3" id="img">
+                                        <img id="pro" class="img-responsive" src="assets/images/logo.jpg" alt="profile-image">
+                                    </div>
+                                    <div class="col-xs-5" id="details">
+                                        <h6>Hiram Kabuagi</h6>
+                                        <p>County: Trans-Nzoia</p>
+                                    </div>
+                                    <div class="col-xs-2" id="status">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <span class="glyphicon glyphicon-pencil edit"></span>
+                                    </div>
+                                </div>
+                                <div class="row post-content">
+                                    <div class="col-xs-12">
+                                        <p>The Trans-Nzoia Uganda road under construction has taken too long, the contractor says it's due to delayed funds and bad weather.</p>
+                                    </div>
+                                </div>
+                                <div class="row post-image">
+                                    <div class="col-xs-12">
+                                        <img src="assets/images/download.jpg" class="img-responsive" alt="post">
+                                    </div>
+                                </div>
+                                <div class="row post-actions">
+                                    <div class="col-xs-4"><span class="add glyphicon glyphicon-heart"></span> 50</div>
+                                    <div class="col-xs-6"><span class="add glyphicon glyphicon-comment"></span> 100</div>
+                                    <div class="col-xs-2"><span class="glyphicon glyphicon-remove edit-icon"></span></div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                    <!-- video section -->
+                    <div class="container" id="video" style="display: none;">
+                        <div class="row">
+                            <section class="col-lg-4 col-md-5" id="mypost">
+                                <div class="row" id="profile">
+                                    <div class="col-xs-3" id="img">
+                                        <img id="pro" class="profile-img img-responsive" src="assets/images/logo.jpg" alt="profile-image">
+                                    </div>
+                                    <div class="col-xs-5" id="details">
+                                        <h6>Hiram Kabuagi</h6>
+                                        <p>County: Trans-Nzoia</p>
+                                    </div>
+                                    <div class="col-xs-2" id="status">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <span class="glyphicon glyphicon-pencil edit"></span>
+                                    </div>
+                                </div>
+                                <div class="row post-content">
+                                    <div class="col-xs-12">
+                                        <p>The Trans-Nzoia Uganda road under construction has taken too long, the contractor says it's due to delayed funds and bad weather.</p>
+                                    </div>
+                                </div>
+                                <div class="row post-video">
+                                    <div class="col-xs-12">
+                                        <video class="img-responsive" controls>
+                                            <source src="assets/videos/Avant - Lie About Us ft. Nicole Scherzinger (Official Video).mp4" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="row post-actions">
+                                    <div class="col-xs-4"><span class="add glyphicon glyphicon-heart"></span> 50</div>
+                                    <div class="col-xs-6"><span class="add glyphicon glyphicon-comment"></span> 100</div>
+                                    <div class="col-xs-2"><span class="glyphicon glyphicon-remove"></span></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="settings">
+                    <h3>Account Settings</h3>
+                    <!-- Example settings form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" value="Hiram Kabuagi">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" value="hiram@example.com">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="messages">
+                    <h3>Messages</h3>
+                    <!-- Message List -->
+                    <div class="message-list">
+                        <div class="message-item" data-sender="John Doe" data-message="Hi Hiram, I wanted to discuss the new policy changes...">
+                            <strong>John Doe:</strong>
+                            <p>Hi Hiram, I wanted to discuss the new policy changes...</p>
+                        </div>
+                        <div class="message-item" data-sender="Jane Smith" data-message="Can we schedule a meeting for next week?">
+                            <strong>Jane Smith:</strong>
+                            <p>Can we schedule a meeting for next week?</p>
+                        </div>
+                        <div class="message-item" data-sender="Mary Johnson" data-message="Congratulations on the new project!">
+                            <strong>Mary Johnson:</strong>
+                            <p>Congratulations on the new project!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Conversation Section -->
+            <div class="conversation-section">
+                <div class="conversation-header">
+                    <img src="assets/images/logo.jpg" alt="Profile Image">
+                    <h4 id="conversation-sender">John Doe</h4>
+                    <div><span class="glyphicon glyphicon-remove delete-conv"></span></div>
+                </div>
+                <div class="conversation-messages" id="conversation-messages">
+                    <!-- Messages will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- footer section -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 footer-column">
+                        <h4 class="footer-title">About Us</h4>
+                        <p>We are committed to improving our community through collaboration and communication.</p>
+                    </div>
+                    <div class="col-sm-4 footer-column">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Home</a></li>
+                            <li><a href="#" class="footer-link">About</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 footer-column">
+                        <h4 class="footer-title">Follow Us</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Facebook</a></li>
+                            <li><a href="#" class="footer-link">Twitter</a></li>
+                            <li><a href="#" class="footer-link">Instagram</a></li>
+                            <li><a href="#" class="footer-link">Linkedin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <p class="text-muted">&copy; 2024 TopCounty. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
