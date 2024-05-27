@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+        
+        <!--style shheets-->
+        <link rel="stylesheet" href="assets/styles/redister.css">
+        <!--link to js scrips-->
+        <title>TopCounty</title>
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="scripts/register_0.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TopCounty..</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#"><span id="sp" class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="container-fluid login-container">
+    <div class="row w-100">
+        <div class="col-lg-6 order-lg-1 order-2 info-box">
+            <h2>Empower Your Community</h2>
+            <p>Connect with fellow citizens to drive progress and innovation.</p>
+            <p>Share your ideas, collaborate on projects, and communicate with local leaders to make a difference.</p>
+        </div>
+        <div class="col-lg-6 order-lg-2 order-1 login-box">
+            <a href="#" class="signup-link" id="start">Not yet registered? Sign up</a>
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-black btn-block">Login</button>
+                <div class="text-center mt-3">
+                    <a href="#" class="btn btn-link btn-black">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+        <!-- The first singup box -->
+        <div class="col-lg-6 order-lg-2 order-1 signup-box first-box" style="display: none;">
+            <a href="#" class="signup-link" id="back1">Already registered? Login</a>
+            <h2>Sign Up</h2>
+            <form class="form-group">
+                <label for="county">County:</label>
+                <select class="form-control" id="county">
+                    <option>Kitale</option>
+                    <option>Nairobi</option>
+                </select>
+            <br>
+            <label for="sub-county">Sub-County:</label>
+            <select class="form-control" id="sub-county">
+                <option>Saboti</option>
+                <option>Kwanza</option>
+            </select>
+            <br>
+            <label for="ward">Ward:</label>
+            <select class="form-control" id="ward">
+                <option>Tuwan</option>
+                <option>Mitume</option>
+            </select>
+            <button type="button" class="btn btn-black next-button">
+                Next <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+            </form>
+        </div>
+        <!-- last singup-->
+        <div class="col-lg-6 order-lg-2 order-1 signup-box second-box" style="display: none;">
+            <a href="#" class="signup-link last-link">Already registered? Login</a>
+            <h2>Sign Up</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" id="password1" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2" required>
+                </div>
+                <button type="button" class="btn btn-black back-button" id="back">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Back
+                </button>
+                <button type="submit" class="btn btn-black signup-button">
+                    Sign Up
+                </button>
+            </form>
+        </div>             
+    </div>
+</div>
+<!-- footer section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 footer-column">
+                <h4 class="footer-title">About Us</h4>
+                <p>We are committed to improving our community through collaboration and communication.</p>
+            </div>
+            <div class="col-sm-4 footer-column">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="footer-link">Home</a></li>
+                    <li><a href="#" class="footer-link">About</a></li>
+                    <li><a href="#" class="footer-link">Contact</a></li>
+                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4 footer-column">
+                <h4 class="footer-title">Follow Us</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="footer-link">Facebook</a></li>
+                    <li><a href="#" class="footer-link">Twitter</a></li>
+                    <li><a href="#" class="footer-link">Instagram</a></li>
+                    <li><a href="#" class="footer-link">Linkedin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <p class="text-muted">&copy; 2024 TopCounty. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
