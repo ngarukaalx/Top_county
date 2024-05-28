@@ -1,0 +1,20 @@
+// wait for DOM to load
+$(document).ready(function () {
+	// get the current login user
+	$.ajax({
+		url: "http://127.0.0.1:5001/api/v1/user_id",
+		method: "GET",
+		hearders: {
+			'Content-Type': 'application/json'
+		},
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (response) {
+			console.log(response);
+		},
+		error: function (xhr, status, error) {
+			console.error("Error no current user authenticated:", status, error);
+		}
+	});
+});

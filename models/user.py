@@ -9,9 +9,11 @@ from models.textpost import Textpost
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
+import bcrypt
 
 
-class User(BaseModel, Base):
+class User(BaseModel, Base, UserMixin):
     """cretaes the user table"""
     __tablename__ = "users"
     county_id = Column(String(60), ForeignKey("counties.id"), nullable=False)
@@ -25,3 +27,17 @@ class User(BaseModel, Base):
     images = relationship("Image", backref="user", cascade="all, delete, delete-orphan")
     videos = relationship("Video", backref="user", cascade="all, delete, delete-orphan")
     textpost = relationship("Textpost", backref="user", cascade="all, delete, delete-orphan")
+
+    def __setattr__(self, name, value):
+        """Sets a password with bcrypt encription"""
+        if name == "password":
+            value = bcrypt.hashpw(value.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        super().__setattr__(name, value)
+
+    def get_id(self):
+        """return the unique id of the user login"""
+        return str(self.id)
+
+def check_password(stored_hash, password):
+    """checks a password if it matches"""
+    return bcrypt.checkpw(password.encode('utf-8'), stored_hash.encode('utf-8'))

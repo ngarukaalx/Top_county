@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """holds the video class"""
 import models
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey, Text
 from sqlalchemy.orm import relationship

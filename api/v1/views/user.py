@@ -1,10 +1,48 @@
 #!/usr/bin/env python3
 """API endpoints for user"""
 from models import storage
-from models.user import User
+from models.user import User, check_password
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
+from flask_login import login_user, current_user, logout_user
 
+@app_views.route('/login', methods=['POST'], strict_slashes=False)
+def user_login():
+    """logins a user"""
+    if not request.get_json():
+        abort(400, description="Not a JSON")
+    if request.method == 'POST':
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
+        if not email or not password:
+            abort(400, description="Email and password are required")
+
+        # fetch user based on email
+        user = next((user for user in storage.all(User).values() if user.email == email), None)
+        if user:
+            stored_hash = user.password
+            if check_password(stored_hash, password):
+                # login user if password matches
+                login_user(user)
+                return jsonify({"message": "Login succesfull"}), 200
+            else:
+                return jsonify({"Error": "Invalid email or password"}), 401
+
+@app_views.route('/user_id', methods=['GET'], strict_slashes=False)
+def get_user_id():
+    """returns the user id of the login user"""
+    if current_user.is_authenticated:
+        user = {"auth_user": current_user.get_id()}
+        return jsonify(user), 200
+    else:
+        return jsonify({"Error": "No connection"}), 404
+
+@app_views.route('/logout', methods=['POST'], strict_slashes=False)
+def logout():
+    """logs out the current user"""
+    logout_user()
+    return jsonify({'message': 'logout succesfull'})
 
 @app_views.route('/user/<county_id>/<sub_id>/<ward_id>/', methods=['POST'], strict_slashes=False)
 def create_user(county_id, sub_id, ward_id):

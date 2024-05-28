@@ -29,6 +29,10 @@ def user():
     """servers user page"""
     return render_template('user_page.html', cache_id=cache_id)
 
+@app.route('/register', strict_slashes=False)
+def register():
+    """serves register page"""
+    return render_template('register.html', cache_id=cache_id)
 
 if __name__ == "__main__":
     """Driver function"""

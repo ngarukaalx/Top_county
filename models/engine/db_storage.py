@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """engine for db storage"""
 import models
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.county import County
 from models.subcounty import Subcounty
 from models.ward import Ward
@@ -42,7 +42,10 @@ class DBStorage:
                     TPC_MYSQL_HOST,
                     TPC_MYSQL_DB
                 ),
-                pool_pre_ping=True
+                pool_pre_ping=True,
+                pool_size=10,
+                max_overflow=20,
+                pool_timeout=30
                 )
 
         if TPC_ENV == "test":
@@ -73,7 +76,7 @@ class DBStorage:
 
     def reload(self):
         """creates session, creates all tables"""
-        Base.metadata.create_all(__engine)
+        Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session
@@ -86,15 +89,19 @@ class DBStorage:
         """returns an object based on cls name and id"""
         if cls not in classes.values():
             return None
-        class_cls = model.storage.all(cls)
-        for obj in class_cls.vallues():
-            if (obj.id == id)-
-            return value
+        class_cls = models.storage.all(cls)
+        for obj in class_cls.values():
+            if (obj.id == id):
+                return obj
         return None
 
     def count(self, cls=None):
         """count number of cls or all"""
         class_all = classes.values()
+        current_class = classes.get(cls, None)
+        print(current_class)
+        if cls and not current_class:
+            return "Not available in Database"
         if not cls:
             number = 0
             for clss in class_all:

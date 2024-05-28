@@ -5,10 +5,10 @@ from models.base_model import BaseModel, Base
 from models.user import User
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy import relationship
+from sqlalchemy.orm import relationship
 
 
-class ward(BaseModel, Base):
+class Ward(BaseModel, Base):
     """creates the User table"""
     __tablename__ = 'wards'
     subcounty_id = Column(String(60), ForeignKey('subcounties.id'), nullable=False)

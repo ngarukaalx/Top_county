@@ -67,3 +67,9 @@ def all_ward():
     """Retrives all wards"""
     all_ward = [ ward.to_dict() for ward in storage.all(Ward).values()]
     return jsonify(all_ward)
+
+@app_views.route('/wards/<sub_id>', methods=['GET'], strict_slashes=False)
+def ward_by_subid(sub_id):
+    """wards related to a subcounty"""
+    all_ward = [ ward.to_dict() for ward in storage.all(Ward).values() if ward.subcounty_id == sub_id]
+    return jsonify(all_ward)

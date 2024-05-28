@@ -67,3 +67,9 @@ def all_sub():
     """Retrives all subcounties"""
     all_sub = [ sub.to_dict() for sub in storage.all(Subcounty).values()]
     return jsonify(all_sub)
+
+@app_views.route('/subc/<county_id>', methods=['GET'], strict_slashes=False )
+def sub_by_id(county_id):
+    """get subcounty by county id"""
+    all_sub = [ sub.to_dict() for sub in storage.all(Subcounty).values() if sub.county_id == county_id]
+    return jsonify(all_sub)

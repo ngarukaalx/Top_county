@@ -11,9 +11,12 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <!--style shheets-->
 	<link rel="stylesheet" href="../static/styles/home.css?{{ cached_id }}">
+	<script type="text/javascript" src="../static/scripts/btn_log.js?{{ cached_id }}"></script>
+	<script type="text/javascript" src="../static/scripts/lougout.js?{{ cached_id }}"></script>
         <title>TopCounty</title>
     </head>
     <body>
@@ -29,9 +32,7 @@
                 <a class="navbar-brand" href="#">TopCounty..</a>
               </div>
               <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <ul class="nav navbar-nav navbar-right" id="login-nav">
                 </ul>
               </div>
             </div>

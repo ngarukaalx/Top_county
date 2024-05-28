@@ -9,7 +9,7 @@ import models
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base
+Base = declarative_base()
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -21,7 +21,7 @@ class BaseModel:
     updated_at = Column(DateTime, default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
-        """initialize the BaseModel instance with id and timestamps"""
+        """initialize the BaseModel instance with id and timaestamps"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -71,8 +71,10 @@ class BaseModel:
 
         # removes _sa_instance_state from dict if it exists
         if '_sa_instance_state' in instance_dict:
+            print("removing _sa_instance_state")
             del instance_dict["_sa_instance_state"]
         if "password" in instance_dict:
+            print("Hashed pass: {}".format(instance_dict['password']))
             del instance_dict["password"]
 
         return instance_dict

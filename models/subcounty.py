@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The subcounty class"""
 import models
-from models.base_model import BasModel, Base
+from models.base_model import BaseModel, Base
 from models.ward import Ward
 from models.user import User
 import sqlalchemy

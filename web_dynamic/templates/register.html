@@ -8,16 +8,18 @@
     
         
         <!--style shheets-->
-        <link rel="stylesheet" href="assets/styles/redister.css">
+	<link rel="stylesheet" href="../static/styles/redister.css?{{ cached_id }}">
         <!--link to js scrips-->
         <title>TopCounty</title>
         <!-- Bootstrap JS and dependencies -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js?"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="scripts/register_0.js"></script>
+	<script type="text/javascript" src="../static/scripts/register_0.js?{{ cached_id }}"></script>
+	<script type="text/javascript" src="../static/scripts/option.js?{{ cached_id }}"></script>
 </head>
-<body>
+<body> <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">TopCounty..</a>
@@ -37,6 +39,7 @@
         </div>
     </nav>
 
+    <!-- loging container -->
 <div class="container-fluid login-container">
     <div class="row w-100">
         <div class="col-lg-6 order-lg-1 order-2 info-box">
@@ -47,10 +50,10 @@
         <div class="col-lg-6 order-lg-2 order-1 login-box">
             <a href="#" class="signup-link" id="start">Not yet registered? Sign up</a>
             <h2>Login</h2>
-            <form>
+            <form id="log">
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    <input type="email" class="form-control" id="emaill" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -69,22 +72,16 @@
             <form class="form-group">
                 <label for="county">County:</label>
                 <select class="form-control" id="county">
-                    <option>Kitale</option>
-                    <option>Nairobi</option>
                 </select>
             <br>
             <label for="sub-county">Sub-County:</label>
             <select class="form-control" id="sub-county">
-                <option>Saboti</option>
-                <option>Kwanza</option>
             </select>
             <br>
             <label for="ward">Ward:</label>
             <select class="form-control" id="ward">
-                <option>Tuwan</option>
-                <option>Mitume</option>
             </select>
-            <button type="button" class="btn btn-black next-button">
+            <button type="button" class="btn btn-black next-button" disabled>
                 Next <span class="glyphicon glyphicon-arrow-right"></span>
             </button>
             </form>
@@ -93,7 +90,7 @@
         <div class="col-lg-6 order-lg-2 order-1 signup-box second-box" style="display: none;">
             <a href="#" class="signup-link last-link">Already registered? Login</a>
             <h2>Sign Up</h2>
-            <form>
+            <form id="sign-form">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" required>
