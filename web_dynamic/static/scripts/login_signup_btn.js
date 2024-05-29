@@ -22,9 +22,8 @@ $(document).ready(function () {
 		error: function (xhr, status, error) {
 			const ul = $('#login-nav');
 			ul.empty();
-			ul.append("<li id='sign-link'><a href='#'><span class='glyphicon glyphicon-user'></span> Welcome</a></li>");
-			ul.append("<li id='login-link'><a href='#'><span class='glyphicon glyphicon-log-in'></span> logout</a></li>");
-			console.error("Error no current user authenticated:", status, error);
+			ul.append("<li id='sign-link'><a href='#'><span class='glyphicon glyphicon-user'></span> sign up</a></li>");
+			ul.append("<li id='login-link'><a href='#'><span class='glyphicon glyphicon-log-in'></span> login</a></li>");
 		}
 	});
 });
