@@ -121,7 +121,7 @@ $(document).ready(function () {
 								info.attr({ id: "details"});
 								info.addClass('col-xs-5');
 								const h6 = $('h6').text(data.user_name);
-								const county = await fetchCounty(image.county_id);
+								const county = await fetchCounty(data.county_id);
 								const pi = $('<p>').text("County: " + county);
 								info.append(h6, county); // append to section
 								// p3
@@ -203,6 +203,8 @@ $(document).ready(function () {
 
 								// fill the section in full
 								sectionImage.append(firstDiv, postContent, postImage, postAction);
+								const rowImage = $('#postImages');
+								rowImage.append(sectionImage);
 
 
 							});
@@ -216,6 +218,100 @@ $(document).ready(function () {
 							'Content-Type': 'application/json'
 						},
 						success: async, function(datas) {
+							// loop through each datas and create a video post
+							$.each(datas, async, function(index, video) {
+								// fisrt div
+								const firstDiv = $('<div>').addClass('row');
+								firstDiv.attr({
+									id: 'profile'
+								});
+								const vidDiv = $('<div>').addClass('col-xs-3');
+								vidDiv.attr({
+									id: "img"
+								});
+								const vidImg = $('<img>');
+								vidImg.addClass('profile-img');
+								vidImg.addClass('img-responsive');
+								vidImg.attr({
+									id: 'pro',
+									src: video.url
+									alt: "profile"
+								});
+								// first div append1
+								vidDiv.append(vidImg);
+
+								const vidDetails = $('<div>').addClass('col-xs-5');
+								vidDetails.attr({
+									id: "details"
+								});
+								const h6 = $('<h6>').text(data.user_name);
+								const county = await fetchCounty(data.county_id);
+								const pv = $('<p>').text(county);
+								// first div append2
+								vidDetails.append(h6, pv);
+
+								const divStat = $('<div>').addClass('col-xs-2');
+								divStat.attr({ id: "status"});
+								const spanStar = $('<span>').addClass('glyphicon');
+								spanStar.addClass('glyphicon-star');
+
+								// first div append3
+								divStat.append(spanStar);
+
+								const divEd = $('<div>').addClass('col-xs-2');
+								const spanEdit = $('<span>').addClass('glyphicon');
+								spanEdit.addClass('glyphicon-pencil');
+								spanEdit.addClass('edit');
+								// first div append4
+								divEd.append(spanEdit);
+
+								// now append to first div
+								firstDiv.append(vidDiv, vidDetails, divStat, divEd ); // section append 1
+
+								// second div
+								const vidContent = $('<div>').addClass('row');
+								vidContent.addClass('post-content');
+								const vidtext = $('<div>').addClass('col-xs-12');
+								const vidp = $('<p>').text(video.description);
+								vidtext.append(vidp);
+								vidContent.append(vidtext); // section append2
+								//third div
+								const vida = $('<div>').addClass('row');
+								vida.addClass('post-video');
+								const vidS = $('<div>').addClass('col-xs-12');
+								const videoP = $('<video>').addClass('img-responsive');
+								videoP.attr('controls', true);
+								const source = $('<source>').attr({
+									src: video.url,
+									type: 'video/mp4'
+								});
+								videoP.append(source);
+								vidS.append(videoP);
+								vida.append(videoP); // section append 3
+								
+								// forth div
+								const actions = $('<div>').addClass('row post-actions');
+								const dispn1 = $('<div>').addClass('col-xs-4');
+								const dispn2 = $('<div>').addClass('col-xs-6');
+								const dispn3 = $('<div>').addClass('col-xs-2');
+								const spn1 = $('<span>').addClass('add glyphicon glyphicon-heart');
+								dispn1.append(spn1);
+								const spn2 = $('<span>').addClass('add glyphicon glyphicon-comment');
+								dispn2.append(spn2);
+								const spn3 = $('<span>').addClass('glyphicon glyphicon-remove');
+								dispn3.append(spn3);
+								actions.append(dispn1, dispn2, dispn3); // section append 4
+								const sectionVideo = $('<section>').addClass('col-lg-4 col-md-5');
+								sectionVideo.attr({
+									id: "mypost"
+								});
+
+								// app all divs to sectionVideo
+								sectionVideo.append(firstDiv, vidContent, vida, actions);
+								const videoPostf = $('#videoPost');
+								videoPostf.append(sectionVideo);
+
+							});
 						}
 					});
 				}
