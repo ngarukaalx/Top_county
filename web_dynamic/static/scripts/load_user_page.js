@@ -37,6 +37,22 @@ $(document).ready(function () {
 							throw error;
 						}
 					};
+					// fetch county name using county_id from user
+					async function fetchCounty(id) {
+						try {
+							const fedback = await $.ajax({
+								url: `http://127.0.0.1:5001/api/v1/counties/${ data.county_id}`,
+								method: "GET",
+								headers: {
+									'Content-Type': 'application/json'
+								},
+							});
+							return fedback[0].name;
+						} catch (error) {
+							console.error('Error fetching conty:', error);
+							throw error
+						}
+					};
 					// call fetchProfile with userId
 					try {
 						const profile = await fetchProfile(user_id);
@@ -121,7 +137,12 @@ $(document).ready(function () {
 								info.attr({ id: "details"});
 								info.addClass('col-xs-5');
 								const h6 = $('h6').text(data.user_name);
-								const county = await fetchCounty(data.county_id);
+								try {
+									const county = await fetchCounty(data.county_id);
+								} catch (error) {
+									console.error('Error getting name:', error);
+								}
+
 								const pi = $('<p>').text("County: " + county);
 								info.append(h6, county); // append to section
 								// p3
@@ -245,8 +266,12 @@ $(document).ready(function () {
 									id: "details"
 								});
 								const h6 = $('<h6>').text(data.user_name);
-								const county = await fetchCounty(data.county_id);
-								const pv = $('<p>').text(county);
+								try {
+									const countyn = await fetchCounty(data.county_id);
+								} catch (error) {
+									console.error('Error getting countyname:', error);
+								}
+								const pv = $('<p>').text(countyn);
 								// first div append2
 								vidDetails.append(h6, pv);
 
