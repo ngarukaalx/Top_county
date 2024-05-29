@@ -47,9 +47,9 @@ $(document).ready(function () {
 									'Content-Type': 'application/json'
 								},
 							});
-							return fedback[0].name;
+							return fedback.name;
 						} catch (error) {
-							console.error('Error fetching conty:', error);
+							console.error('Error fetching county:', error);
 							throw error
 						}
 					};
@@ -104,14 +104,14 @@ $(document).ready(function () {
 					}
 					// fetch image posts for this user
 					$.ajax({
-						url: ``,
+						url: `http://127.0.0.1:5001/api/v1/imageuser/${ user_id }`,
 						method: "GET",
 						headers: {
 							'Content-Type': 'application/json'
 						},
-						success: async, function(datas) {
+						success: async function(datas) {
 							// loop through datas and create post image
-							$.each(datas, async, function (index, image) {
+							$.each(datas, async function (index, image) {
 								const sectionImage = $('<section>');
 								sectionImage.attr({
 									id: "mypost"
@@ -119,15 +119,15 @@ $(document).ready(function () {
 								sectionImage.addClass('col-lg-4');
 								sectionImage.addClass('col-md-5');
 								// to be appended to section
-								const divImg = $('<div>);
+								const divImg = $('<div>');
 								divImg.addClass('col-xs-3');
 								// p1
 								divImg.attr({ id: "img"});
 								const imgp = $('<img>');
 								imgp.attr({
-									id: "pro,
+									id: "pro",
 									src: image.url,
-									alt: "profile""
+									alt: "profile"
 								});
 								imgp.addClass('img-responsive');
 								divImg.append(imgp);
@@ -137,8 +137,9 @@ $(document).ready(function () {
 								info.attr({ id: "details"});
 								info.addClass('col-xs-5');
 								const h6 = $('h6').text(data.user_name);
+								let county;
 								try {
-									const county = await fetchCounty(data.county_id);
+									county = await fetchCounty(data.county_id);
 								} catch (error) {
 									console.error('Error getting name:', error);
 								}
@@ -163,9 +164,9 @@ $(document).ready(function () {
 								edit.append(editSpan); // appebd to section
 								const fistDiv = $('<div>');
 								fistDiv.addClass('row');
-								firstDiv.attr({id: 'profile'});
+								fistDiv.attr({id: 'profile'});
 								// section 1append
-								firstDiv.append(divImg, info, divStatus, edit);
+								fistDiv.append(divImg, info, divStatus, edit);
 								const postContent = $('<div>');
 								postContent.addClass('row');
 								postContent.addClass('post-content');
@@ -180,15 +181,15 @@ $(document).ready(function () {
 								const postImage = $('<div>');
 								postImage.addClass('row');
 								postImage.addClass('post-image');
-								const divImage = $('<div');
+								const divImage = $('<div>');
 								divImage.addClass('col-xs-12');
-								const Imagep = $('<img>');
-								Imagep.attr({
+								const imagep = $('<img>');
+								imagep.attr({
 									src: image.url,
-									alt: post
+									alt: "image"
 								});
 								imagep.addClass('img-responsive');
-								divImage.append(Imagep);
+								divImage.append(imagep);
 								// section append 3
 								postImage.append(divImage);
 
@@ -223,7 +224,7 @@ $(document).ready(function () {
 
 
 								// fill the section in full
-								sectionImage.append(firstDiv, postContent, postImage, postAction);
+								sectionImage.append(fistDiv, postContent, postImage, postAction);
 								const rowImage = $('#postImages');
 								rowImage.append(sectionImage);
 
@@ -233,14 +234,14 @@ $(document).ready(function () {
 					});
 					// fetch video posts for this user
 					$.ajax({
-						url: ``,
+						url: `http://127.0.0.1:5001/api/v1/videouser/${ user_id }`,
 						method: "GET",
 						headers: {
 							'Content-Type': 'application/json'
 						},
-						success: async, function(datas) {
+						success: async function(datas) {
 							// loop through each datas and create a video post
-							$.each(datas, async, function(index, video) {
+							$.each(datas, async function(index, video) {
 								// fisrt div
 								const firstDiv = $('<div>').addClass('row');
 								firstDiv.attr({
@@ -255,7 +256,7 @@ $(document).ready(function () {
 								vidImg.addClass('img-responsive');
 								vidImg.attr({
 									id: 'pro',
-									src: video.url
+									src: video.url, // error to be fixed
 									alt: "profile"
 								});
 								// first div append1
@@ -266,8 +267,9 @@ $(document).ready(function () {
 									id: "details"
 								});
 								const h6 = $('<h6>').text(data.user_name);
+								let countyn;
 								try {
-									const countyn = await fetchCounty(data.county_id);
+									countyn = await fetchCounty(data.county_id);
 								} catch (error) {
 									console.error('Error getting countyname:', error);
 								}
@@ -301,8 +303,7 @@ $(document).ready(function () {
 								vidtext.append(vidp);
 								vidContent.append(vidtext); // section append2
 								//third div
-								const vida = $('<div>').addClass('row');
-								vida.addClass('post-video');
+								const vida = $('<div>').addClass('row post-video');
 								const vidS = $('<div>').addClass('col-xs-12');
 								const videoP = $('<video>').addClass('img-responsive');
 								videoP.attr('controls', true);
@@ -312,7 +313,7 @@ $(document).ready(function () {
 								});
 								videoP.append(source);
 								vidS.append(videoP);
-								vida.append(videoP); // section append 3
+								vida.append(vidS); // section append 3
 								
 								// forth div
 								const actions = $('<div>').addClass('row post-actions');
