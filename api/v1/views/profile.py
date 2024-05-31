@@ -63,3 +63,9 @@ def get_all():
     if not profiles:
         abort(404)
     return jsonify(profiles)
+
+@app_views.route('/profileuser/<user_id>', methods=['GET'], strict_slashes=False)
+def profile_user(user_id):
+    """get a profile for a user"""
+    profiles = [pro.to_dict() for pro in storage.all(Profile).values() if pro.user_id == user_id]
+    return jsonify(profiles)
