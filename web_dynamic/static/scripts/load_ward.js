@@ -3,14 +3,14 @@ $(document).ready(async function () {
 
 	// fetch value from url
 	const urlParams = new URLSearchParams(window.location.search);
-	const subId = urlParams.get('value');
+	const wardId = urlParams.get('value');
         
 	
-	// fetch subcounty asynchronously
-	async function fetchsubcounty(id) {
+	// fetch ward asynchronously
+	async function fetchWard(id) {
 		try {
 			const response = await $.ajax({
-				url: `http://127.0.0.1:5001/api/v1/sub/${id}`,
+				url: `http://127.0.0.1:5001/api/v1/ward/${id}`,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
@@ -18,24 +18,24 @@ $(document).ready(async function () {
 			});
 			return response;
 		} catch (error) {
-			console.error('Error getting subcounty:', error);
+			console.error('Error getting ward:', error);
 			throw error;
 		}
 	}
 
-	// call fetchCouty with id from clicked
-	let subcountyObj;
+	// call fetchWard with id from clicked
+	let wardObj;
 	try {
-		subcountyObj = await fetchsubcounty(subId);
+		wardObj = await fetchWard(wardId);
 	} catch (error) {
-		console.error('Error getting subcounty: ', error);
+		console.error('Error getting ward: ', error);
 	}
 
-    // get a county given an id
-    async function fetchCounty(id) {
+    // get a subcounty given an id
+    async function fetchSubounty(id) {
         try {
                 const response = await $.ajax({
-                        url: `http://127.0.0.1:5001/api/v1/counties/${id}`,
+                        url: `http://127.0.0.1:5001/api/v1/sub/${id}`,
                         method: 'GET',
                         headers: {
                                 'Content-Type': 'application/json'
@@ -43,17 +43,17 @@ $(document).ready(async function () {
                 });
                 return response;
         } catch (error) {
-                console.error('Error getting county:', error);
+                console.error('Error getting subcounty:', error);
                 throw error;
         }
     }
 
-    // fetchCounty given an id
-    let coutyobj;
+    // fetchSubounty given an id
+    let subCoutyobj;
     try {
-		coutyobj = await fetchCounty(subcountyObj.county_id);
+		subCoutyobj = await fetchSubounty(wardObj.subcounty_id);
 	} catch (error) {
-		console.error('Error getting county: ', error);
+		console.error('Error getting subcounty: ', error);
 	}
 	// fetch a user given a userid
 	async function userByid(id) {
@@ -93,7 +93,7 @@ $(document).ready(async function () {
 	async function getNumberUsers(id) {
 		try {
 			const count = await $.ajax({
-				url: `http://127.0.0.1:5001/api/v1/usercount/subcounty/${ id }`,
+				url: `http://127.0.0.1:5001/api/v1/usercount/ward/${ id }`,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
@@ -105,24 +105,6 @@ $(document).ready(async function () {
 			throw error;
 		}
 	}
-
-	// get wards  given subcounty id
-	async function wardSub(id) {
-		try {
-			const wards = await $.ajax({
-				url: `http://127.0.0.1:5001/api/v1/wards/${ id }`,
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-			});
-			return wards;
-		} catch (error) {
-			console.error('Error getting wards: ', error);
-			throw error;
-		}
-	}
-
 
 
 	// fetch image posts
@@ -160,12 +142,12 @@ $(document).ready(async function () {
 			throw error;
 		}
 	}
-	// update subcounty name and searchbar and leader
-	const h4 = $('<h4>').text('County:' + coutyobj.name);
-	const h6 = $('<h6>').text('Sub: ' + subcountyObj.name);
+	// update ward name and searchbar and leader
+	const h4 = $('<h4>').text('Ward:' + wardObj.name);  // am here
+	const h6 = $('<h6>').text('Subcounty: ' + subCoutyobj.name);
 	
 	const pc = $('<p>').text('Members');
-	const spnText = await getNumberUsers(subcountyObj.id);
+	const spnText = await getNumberUsers(wardObj.id);
 	    console.log('This the user count: ', spnText);
 	const spnCount = $('<span>').addClass('badge').text(spnText);
 	pc.append(spnCount);
@@ -194,6 +176,7 @@ $(document).ready(async function () {
 	leader.append(a, h4Leader, btn);
 
 
+	/*
 	// fetch wards for this subcounty
 	try {
 		const wrd = await wardSub(subId);
@@ -213,10 +196,14 @@ $(document).ready(async function () {
 	} catch (error) {
 		console.error('Error getting wards: ', error);
 	}
+	*/
+
+	// hide dropdown its not needed here
+	$('.custom-dropdown-menu').hide();
 
 
 	// call getImages() to fetch all images update the page with only post for this county
-	try {
+	try {                                                                                      // reached here
 		let allImages = await getImages();
 		$('#dynamic').empty();
 

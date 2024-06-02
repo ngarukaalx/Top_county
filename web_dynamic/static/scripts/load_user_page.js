@@ -89,7 +89,7 @@ $(document).ready(function () {
 						}
 						const p = $('<p>').text(title);
 						const userData = $('.profile-header');
-						const postBtn = $('<button>').addClass('btn btn-primary').text("+post").attr({
+						const postBtn = $('<button>').addClass('btn btn-primary btn-xs').text("+post").attr({
 							id: 'post-content',
 							type: 'button',
 							'data-toggle': 'modal',

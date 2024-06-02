@@ -143,8 +143,16 @@ $(document).ready(async function () {
 	const spnText = await getNumberUsers(countyObj.id);
 	const spnCount = $('<span>').addClass('badge').text(spnText);
 	pc.append(spnCount);
+        // button post 
+        const postBtn = $('<button>').addClass('btn btn-primary btn-xs').text("+post").attr({
+                                                        id: 'post-content',
+                                                        type: 'button',
+                                                        'data-toggle': 'modal',
+                                                        'data-target': '#postModal'
+                                                });
+
 	const nameCounty = $('#name-county');
-	nameCounty.append(h4, h6, pc);
+	nameCounty.append(h4, h6, pc, postBtn);
 
 	// leader section 
 	const a = $('<a>').attr({href: "#"});
@@ -413,6 +421,14 @@ $(document).ready(async function () {
         } catch (error) {
                 console.error('Error fetching images: ', error);
         } 
+
+	// change window when dropdown clicked
+	$(document).on('click', '#drp li', async function() {
+		const subId = $(this).attr('sub-id');
+
+		// make this value available to the shifted page
+		window.open(`http://127.0.0.1:5000/subcounty?value=${encodeURIComponent(subId)}`, '_self');
+	});
                        	
 
 
