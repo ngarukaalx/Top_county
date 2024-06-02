@@ -10,16 +10,24 @@ $(document).ready(function () {
 		xhrFields: {
 			withCredentials: true
 		},
-		success: function (response) {
+		success: async function (response) {
 			let user_id = response.auth_user;
-			// get this user
-			$.ajax({
-				url: `http://127.0.0.1:5001/api/v1/user/${user_id}`,
-				method: "GET",
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				success: async function (data) {
+			// get this user asynchronously
+			async function getUser(userid) {
+				try {
+					const userObj = $.ajax({
+						url: `http://127.0.0.1:5001/api/v1/user/${user_id}`,
+						method: "GET",
+						headers: {
+							'Content-Type': 'application/json'
+						},
+					});
+					return userObj;
+				} catch (error) {
+					console.error('Error getting user:', error);
+					throw error;
+				}
+			};
 					// get profle for this user 
 					// async fuction to fetch profile for this user
 					async function fetchProfile(userId) {
@@ -41,7 +49,7 @@ $(document).ready(function () {
 					async function fetchCounty(id) {
 						try {
 							const fedback = await $.ajax({
-								url: `http://127.0.0.1:5001/api/v1/counties/${ data.county_id}`,
+								url: `http://127.0.0.1:5001/api/v1/counties/${ id }`,
 								method: "GET",
 								headers: {
 									'Content-Type': 'application/json'
@@ -53,16 +61,19 @@ $(document).ready(function () {
 							throw error
 						}
 					};
+			                // get user to make it available throught
+			                let thisUser = await getUser(user_id);
 					// call fetchProfile with userId
 					try {
 						const profile = await fetchProfile(user_id);
-						let urlLogo = "default";
+						let urlLogo = "logo.jpg";
 						if (profile) {
 							urlLogo = profile.url;
 						}
 						// clear profile section and append as per user
 						$('.profile-header').empty();
 						const logUrl = "http://127.0.0.1:5001/api/v1/uploads/" + urlLogo
+
 						const img = $('<img>');
 						img.addClass('profile-photo');
 						img.addClass('img-responsive');
@@ -70,14 +81,21 @@ $(document).ready(function () {
 							src: logUrl,
 							alt: 'profile'
 						});
-						const h2 = $('<h2>').text(data.user_name);
-						let title = data.role;
-						if (data.role === null) {
-							title = "Citizen";
+
+						const h2 = $('<h2>').text(thisUser.user_name);
+						let title = thisUser.role;
+						if (thisUser.role === null) {
+				          		title = "Citizen";
 						}
 						const p = $('<p>').text(title);
 						const userData = $('.profile-header');
-						userData.append(img, h2, p);
+						const postBtn = $('<button>').addClass('btn btn-primary').text("+post").attr({
+							id: 'post-content',
+							type: 'button',
+							'data-toggle': 'modal',
+							'data-target': '#postModal'
+						});
+						userData.append(img, h2, p, postBtn);
 
 						// upated settings with right data
 						const userSet = $('#user_st');
@@ -88,7 +106,7 @@ $(document).ready(function () {
 						inputUser.attr({
 							type: 'text',
 							id: 'username',
-							value: data.user_name
+							value: thisUser.user_name
 						});
 						userSet.append(inputUser);
 						const inputEmail = $('<input>');
@@ -96,13 +114,14 @@ $(document).ready(function () {
 						inputEmail.attr({
 							type: 'text',
 							id: 'email',
-							value: data.email,
+							value: thisUser.email,
 						});
 						emailSet.append(inputEmail);
 					} catch (error) {
 						console.error("Failed to fetch profile:", error);
 					}
 					// fetch image posts for this user
+			                
 					$.ajax({
 						url: `http://127.0.0.1:5001/api/v1/imageuser/${ user_id }`,
 						method: "GET",
@@ -124,9 +143,16 @@ $(document).ready(function () {
 								// p1
 								divImg.attr({ id: "img"});
 								const imgp = $('<img>');
+								const urlImage = "http://127.0.0.1:5001/api/v1/uploads/" + image.url
+								// fetch profile for this user
+								const profileUser = await fetchProfile(thisUser.user_id);
+								let defaulProfile = "http://127.0.0.1:5001/api/v1/uploads/logo.jpg";
+								if (profileUser) {
+									defaulProfile = "http://127.0.0.1:5001/api/v1/uploads/" + profileUser.url
+								}
 								imgp.attr({
 									id: "pro",
-									src: image.url,
+									src: defaulProfile,
 									alt: "profile"
 								});
 								imgp.addClass('img-responsive');
@@ -136,21 +162,21 @@ $(document).ready(function () {
 								const info = $('<div>');
 								info.attr({ id: "details"});
 								info.addClass('col-xs-5');
-								const h6 = $('h6').text(data.user_name);
+								const h6 = $('<h6>').text(thisUser.user_name);
 								let county;
 								try {
-									county = await fetchCounty(data.county_id);
+									county = await fetchCounty(thisUser.county_id);
 								} catch (error) {
 									console.error('Error getting name:', error);
 								}
 
 								const pi = $('<p>').text("County: " + county);
-								info.append(h6, county); // append to section
+								info.append(h6, pi); // append to section
 								// p3
 								const divStatus = $('<div>');
 								divStatus.attr({ id: "status" });
 								divStatus.addClass('col-xs-2');
-								const spn = $('span>');
+								const spn = $('<span>');
 								spn.addClass('glyphicon');
 								spn.addClass('glyphicon-star');
 								divStatus.append(spn); // append 2 section
@@ -185,7 +211,7 @@ $(document).ready(function () {
 								divImage.addClass('col-xs-12');
 								const imagep = $('<img>');
 								imagep.attr({
-									src: image.url,
+									src: "http://127.0.0.1:5001/api/v1/uploads/" + image.url,
 									alt: "image"
 								});
 								imagep.addClass('img-responsive');
@@ -201,24 +227,19 @@ $(document).ready(function () {
 								const ac1 = $('<div>');
 								ac1.addClass('col-xs-4');
 								const spanC1 = $('<span>').text('50');
-								spanC1.addClass('add');
-								spanC1.addClass('glyphicon');
-								spanC1.addClass('glyphicon-heart');
+								spanC1.addClass('glyphicon glyphicon-heart add');
 								ac1.append(spanC1);
 
 								const ac2 = $('<div>');
 								ac2.addClass('col-xs-6');
-								const spanC2 = $('<span>');
-								spanC2.addClass('add');
-								spanC2.addClass('glyphicon');
-								spanC2.addClass('glyphicon-comment');
+								const spanC2 = $('<span>').text('100');
+								spanC2.addClass('glyphicon glyphicon-comment add');
+								ac2.append(spanC2);
 
 								const ac3 = $('<div>');
 								ac3.addClass('col-xs-2');
-								const spanC3 = $('<span>');
-								spanC3.addClass('glyphicon');
-								spanC3.addClass('glyphicon-remove');
-								spanC3.addClass('edit-icon');
+								const spanC3 = $('<span>').addClass('glyphicon glyphicon-remove edit-icon');
+								ac3.append(spanC3);
 
 								postAction.append(ac1, ac2, ac3);
 
@@ -254,9 +275,14 @@ $(document).ready(function () {
 								const vidImg = $('<img>');
 								vidImg.addClass('profile-img');
 								vidImg.addClass('img-responsive');
+								let profileDefault = "http://127.0.0.1:5001/api/v1/uploads/logo.jpg";
+								const profileUser = await fetchProfile(thisUser.user_id);
+								if (profileUser) {
+									profileDefault = "http://127.0.0.1:5001/api/v1/uploads/" + profileUser.url
+								}
 								vidImg.attr({
 									id: 'pro',
-									src: video.url, // error to be fixed
+									src: profileDefault,
 									alt: "profile"
 								});
 								// first div append1
@@ -266,10 +292,10 @@ $(document).ready(function () {
 								vidDetails.attr({
 									id: "details"
 								});
-								const h6 = $('<h6>').text(data.user_name);
+								const h6 = $('<h6>').text(thisUser.user_name);
 								let countyn;
 								try {
-									countyn = await fetchCounty(data.county_id);
+									countyn = await fetchCounty(thisUser.county_id);
 								} catch (error) {
 									console.error('Error getting countyname:', error);
 								}
@@ -308,7 +334,7 @@ $(document).ready(function () {
 								const videoP = $('<video>').addClass('img-responsive');
 								videoP.attr('controls', true);
 								const source = $('<source>').attr({
-									src: video.url,
+									src: "http://127.0.0.1:5001/api/v1/uploads/" + video.url,
 									type: 'video/mp4'
 								});
 								videoP.append(source);
@@ -342,6 +368,4 @@ $(document).ready(function () {
 					});
 				}
 			});
-		}
-	});
 });
