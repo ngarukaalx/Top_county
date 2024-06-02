@@ -162,6 +162,10 @@ $(document).ready(async function () {
 	// fetch subcounties for this county
 	try {
 		const sub = await getSubcounties(countyId);
+		$('#btn-drp').text('Sub-counties');
+		const carret = $('<span>').addClass('caret');
+		$('#btn-drp').append(carret);
+		$('.custom-dropdown-menu').attr({id: 'drp'});
 		// loop through each subcounty
 		$.each(sub, function(index, subcounty) {
 			const dropDown = $('.custom-dropdown-menu');
