@@ -143,12 +143,11 @@ $(document).ready(async function () {
 		}
 	}
 	// update ward name and searchbar and leader
-	const h4 = $('<h4>').text('Ward:' + wardObj.name);  // am here
+	const h4 = $('<h4>').text('Ward:' + wardObj.name);
 	const h6 = $('<h6>').text('Subcounty: ' + subCoutyobj.name);
 	
 	const pc = $('<p>').text('Members');
 	const spnText = await getNumberUsers(wardObj.id);
-	    console.log('This the user count: ', spnText);
 	const spnCount = $('<span>').addClass('badge').text(spnText);
 	pc.append(spnCount);
         // button post
@@ -157,7 +156,7 @@ $(document).ready(async function () {
                                                         type: 'button',
                                                         'data-toggle': 'modal',
                                                         'data-target': '#postModal'
-                                                });
+                                                }).css('display', 'none');
 	const nameCounty = $('#name-county');
         nameCounty.empty();
 	nameCounty.append(h4, h6, pc, postBtn);
@@ -212,7 +211,7 @@ $(document).ready(async function () {
 			// call userByid(id) fuction to get a user of this image
 			const user = await userByid(image.user_id);
 			// check if this user belongs to this county
-			if (user.subcounty_id == subId) {
+			if (user.ward_id == wardId) {
 				// populate the page with this post
 				const firstDiv = $('<div>').addClass('row').attr({
 					id: "profile"
@@ -242,7 +241,7 @@ $(document).ready(async function () {
 					id: 'details'
 				});
 				const h6 = $('<h6>').text(user.user_name);
-				const p = $('<p>').text('Sub: ' + subcountyObj.name);
+				const p = $('<p>').text('ward: ' + wardObj.name);       // reach here
 				// will be appended to firstDiv
 				first2.append(h6, p);
 
@@ -262,12 +261,15 @@ $(document).ready(async function () {
 				// append to fisrtDiv
 				firstDiv.append(first1, first2, first3, first4); // first section append 1
 
-				const secondDiv = $('<div>').addClass('row post-content');
+				const secondDiv = $('<div>').addClass('row post-content').attr({id: 'remove-c'});
 
 				const second1 = $('<div>').addClass('col-xs-12');
-				const ptext = $('<p>').text(image.description);
+				const ptext = $('<p>').text(image.description).attr({id: 'remove-t'});
 
-				second1.append(ptext);
+				const a1 = $('<a>').addClass('read-more').text('...more').attr({href: 'javascript:void(0);'});
+				const a2 = $('<a>').addClass('hide-more').text('...hide').attr({href: 'javascript:void(0);'});
+
+				second1.append(ptext, a1, a2);
 
 				secondDiv.append(second1); // section append 2
 
@@ -331,7 +333,7 @@ $(document).ready(async function () {
                         // call userByid(id) fuction to get a user of this image
                         const user = await userByid(video.user_id);
                         // check if this user belongs to this county
-                        if (user.subcounty_id == subId) {
+                        if (user.ward_id == wardId) {
                                 // populate the page with this post
                                 const firstDiv = $('<div>').addClass('row').attr({
                                         id: "profile"
@@ -361,7 +363,7 @@ $(document).ready(async function () {
                                         id: 'details'
                                 });
                                 const h6 = $('<h6>').text(user.user_name);
-                                const p = $('<p>').text('Sub: ' + subcountyObj.name);
+                                const p = $('<p>').text('ward: ' + wardObj.name);
                                 // will be appended to firstDiv
                                 first2.append(h6, p);
 
@@ -440,9 +442,4 @@ $(document).ready(async function () {
                 console.error('Error fetching images: ', error);
         }
 
-	// lead to ward page when dropdown clicked
-	$(document).on('click', '#drpw li', async function() {
-		const wardId = $(this).attr('sub-id');
-		window.open(`http://127.0.0.1:5000/ward?value=${encodeURIComponent(wardId)}`, '_self');
-	});
 });

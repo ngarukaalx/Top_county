@@ -94,7 +94,7 @@ $(document).ready(function () {
 							type: 'button',
 							'data-toggle': 'modal',
 							'data-target': '#postModal'
-						});
+						}).css('display', 'none');
 						userData.append(img, h2, p, postBtn);
 
 						// upated settings with right data
@@ -195,14 +195,16 @@ $(document).ready(function () {
 								fistDiv.append(divImg, info, divStatus, edit);
 								const postContent = $('<div>');
 								postContent.addClass('row');
-								postContent.addClass('post-content');
+								postContent.addClass('post-content').attr({id: 'remove-c'});
 								// child
 								const cntend = $('<div>');
 								cntend.addClass('col-xs-12');
-								const postI = $('<p>').text(image.description);
+								const postI = $('<p>').text(image.description).addClass('post-text').attr({id: 'remove-t'});
+								const a1 = $('<a>').addClass('read-more').text('...more').attr({href: 'javascript:void(0);'});
+								const a2 = $('<a>').addClass('hide-more').text('...hide').attr({href: 'javascript:void(0);'});
 								cntend.append(postI);
 								// section append 2
-								postContent.append(cntend);
+								postContent.append(cntend, a1, a2);
 
 								const postImage = $('<div>');
 								postImage.addClass('row');

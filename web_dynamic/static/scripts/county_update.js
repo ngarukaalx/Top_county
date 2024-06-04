@@ -149,7 +149,7 @@ $(document).ready(async function () {
                                                         type: 'button',
                                                         'data-toggle': 'modal',
                                                         'data-target': '#postModal'
-                                                });
+                                                }).css('display', 'none');
 
 	const nameCounty = $('#name-county');
 	nameCounty.append(h4, h6, pc, postBtn);
@@ -246,12 +246,14 @@ $(document).ready(async function () {
 				// append to fisrtDiv
 				firstDiv.append(first1, first2, first3, first4); // first section append 1
 
-				const secondDiv = $('<div>').addClass('row post-content');
+				const secondDiv = $('<div>').addClass('row post-content').attr({id: 'remove-c'});
 
 				const second1 = $('<div>').addClass('col-xs-12');
-				const ptext = $('<p>').text(image.description);
+				const ptext = $('<p>').text(image.description).attr({id: 'remove-t'});
+				const a1 = $('<a>').addClass('read-more').attr({href: "javaScript:void(0)"}).text('...more');
+				const a2 = $('<a>').addClass('hide-more').attr({href: "javaScript:void(0)"}).text('...hide');
 
-				second1.append(ptext);
+				second1.append(ptext, a1, a2);
 
 				secondDiv.append(second1); // section append 2
 
@@ -366,7 +368,7 @@ $(document).ready(async function () {
                                 const secondDiv = $('<div>').addClass('row post-content');
 
                                 const second1 = $('<div>').addClass('col-xs-12');
-                                const ptext = $('<p>').text(image.description);
+                                const ptext = $('<p>').text(video.description);
 
                                 second1.append(ptext);
 
