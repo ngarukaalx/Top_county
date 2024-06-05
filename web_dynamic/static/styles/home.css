@@ -89,55 +89,14 @@ body {
 
     /* overflow */
     cursor: pointer;
-    max-height: 700px;
 }
-
-post-content {
-    /* added post styles */
-    position: relative;
-    padding-bottom: 30px;
-} 
-
-.post-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Number of lines to show */
-    -webkit-box-orient: vertical;
+/* final style for image and video */
+#post-image {
+    border-radius: 5px;
+    height: 270px; /* Set a fixed height for the images */
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    object-fit: cover;
 }
-
-.read-more {
-    display: none;
-    color: blue;
-    cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: white;
-    padding: 0px;
-    margin-right: 6px;
-}
-
-.hide-more {
-    display: none;
-    color: blue;
-    cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: white;
-    padding: 0px;
-    margin-right: 6px;
-}
-
-.mypost-collapsed .post-text {
-    -webkit-line-clamp: 3;
-}
-
-.mypost-collapsed .read-more {
-    display: inline;
-}
-
 
 #profile {
     display: flex;
@@ -147,6 +106,8 @@ post-content {
 #profile #img {
     flex: 0 0 auto;
     margin-right: 1px; /* Adjust as needed */
+    height: 100px;
+    width: 100px;
 }
 
 #profile #details {

@@ -100,45 +100,15 @@
     cursor: pointer;
 }
 
-.post-content {
-    /* added post styles */
-    position: relative;
-    padding-bottom: 30px;
-} 
-
-/* Ensure this CSS is included */
-.post-text {
-    max-height: 40px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/* final style for image and video */
+.post-img,
+.post-vid,
+#my-vid {
+    border-radius: 5px;
+    height: 270px; /* Set a fixed height for the images */
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    object-fit: cover;
 }
-
-.post-content.expanded .post-text {
-    max-height: none;
-    white-space: normal;
-}
-
-.read-more {
-    display: inline;
-    color: blue;
-    cursor: pointer;
-}
-
-.hide-more {
-    display: none;
-    color: blue;
-    cursor: pointer;
-}
-
-.post-content.expanded .read-more {
-    display: none;
-}
-
-.post-content.expanded .hide-more {
-    display: inline;
-}
-
 
 #profile {
     display: flex;
@@ -194,11 +164,6 @@
 }
 .post-content {
     margin-bottom: 15px;
-}
-.post-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
 }
 
 .post-actions {

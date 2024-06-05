@@ -218,13 +218,10 @@
     color: gold; /* Example color, change based on governor status */
     font-size: 1.5rem;
 }
-.post-content {
-    margin-bottom: 15px;
-}
 
 /* final style for image and video */
 .post-image img,
-.post-video video{
+.post-video video {
     border-radius: 5px;
     height: 270px; /* Set a fixed height for the images */
     width: 100%; /* Ensure the image takes up the full width of its container */
