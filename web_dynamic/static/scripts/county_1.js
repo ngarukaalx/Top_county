@@ -1,11 +1,11 @@
 // wait for the DOM  o load
 $(document).ready(function() {
-    $('.delete-conv').on('click', function() {
+    $(document).on('click', '.delete-conv', function() {
         $(this).closest('.conversation-section').hide();
         $('#messages').show();
     })
 
-    $('.edit').on('click', function() {
+    $(document).on('click', '.edit', function() {
         alert('Edit functionality to be implemented.');
     })
 });

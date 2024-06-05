@@ -14,8 +14,9 @@ $(document).ready(function() {
         $('#video-btn span').addClass('active-icon');
         $('#home-btn span').removeClass('active-icon');
     });
-    $('.rmv').on('click', function() {
+    $(document).on('click', 'glyphicon-remove', function() {
         $(this).closest('#mypost').remove();
+	    console.log('Clicked')
     } )
 });
 

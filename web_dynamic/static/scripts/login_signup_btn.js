@@ -15,7 +15,7 @@ $(document).ready(function () {
 			if (userId) {
 				const ul = $('#login-nav');
 				ul.empty();
-				ul.append("<li id='sign-link'><a href='#'><span class='glyphicon glyphicon-user'></span> Welcome</a></li>");
+				ul.append("<li id='sign-link'><a href='#'><span class='glyphicon glyphicon-user'></span> myprofile</a></li>");
 				ul.append("<li id='login-link'><a href='#'><span class='glyphicon glyphicon-log-in'></span> logout</a></li>");
 			}
 		},

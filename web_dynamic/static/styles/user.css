@@ -91,6 +91,25 @@
     margin-bottom: 10px;
 }
 
+
+/*  style the post button and post */
+#post-content {
+    background-color: rgb(245, 110, 110);
+    color: #000000;
+}
+
+#mypost {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 15px;
+}
+#bt-close {
+    border-radius: 30px;
+}
+.btn-xs {
+    background-color: rgb(9, 9, 29);
+}
+
 /* style the info section */
 #btn-drp {
     margin-bottom: 15px;
@@ -140,7 +159,34 @@
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 5px solid whitesmoke; /* Light gray border */
     border-radius: 7px;
+
+    /* overflow */
+    cursor: pointer;
 }
+
+
+#profile {
+    display: flex;
+    align-items: center;
+}
+
+#profile #img {
+    flex: 0 0 auto;
+    margin-right: 1px; /* Adjust as needed */
+}
+
+#profile #details {
+    flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
+}
+
+#profile h6, #profile p {
+    margin: 0;
+    padding: 0;
+}
+
+/*  end of post new updates*/
 
 #mypost .edit-icon,
 #mypost .delete-icon {
@@ -175,10 +221,14 @@
 .post-content {
     margin-bottom: 15px;
 }
-.post-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+
+/* final style for image and video */
+.post-image img,
+.post-video video{
+    border-radius: 5px;
+    height: 270px; /* Set a fixed height for the images */
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    object-fit: cover;
 }
 
 .post-actions {

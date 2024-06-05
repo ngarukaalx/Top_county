@@ -24,6 +24,16 @@ def county():
     """serves county"""
     return render_template('county.html', cache_id=cache_id)
 
+@app.route('/subcounty', strict_slashes=False)
+def sub():
+    """serves subcounty"""
+    return render_template('subcounty.html', cache_id=cache_id)
+
+@app.route('/ward', strict_slashes=False)
+def ward():
+    """serves ward"""
+    return render_template('ward.html', cache_id=cache_id)
+
 @app.route('/user', strict_slashes=False)
 def user():
     """servers user page"""

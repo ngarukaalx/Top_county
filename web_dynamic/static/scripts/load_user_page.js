@@ -72,6 +72,11 @@ $(document).ready(function () {
 						}
 						// clear profile section and append as per user
 						$('.profile-header').empty();
+						$('.profile-photo-wrapper').empty();
+						const spnE = $('<span>').addClass('glyphicon glyphicon-pencil profile-edit').attr({
+							'data-toggle': 'modal',
+							'data-target': '#imageUploadModal'
+						});
 						const logUrl = "http://127.0.0.1:5001/api/v1/uploads/" + urlLogo
 
 						const img = $('<img>');
@@ -81,6 +86,7 @@ $(document).ready(function () {
 							src: logUrl,
 							alt: 'profile'
 						});
+						$('.profile-photo-wrapper').append(img, spnE);
 
 						const h2 = $('<h2>').text(thisUser.user_name);
 						let title = thisUser.role;
@@ -95,7 +101,7 @@ $(document).ready(function () {
 							'data-toggle': 'modal',
 							'data-target': '#postModal'
 						}).css('display', 'none');
-						userData.append(img, h2, p, postBtn);
+						userData.append(h2, p, postBtn);
 
 						// upated settings with right data
 						const userSet = $('#user_st');
@@ -195,22 +201,25 @@ $(document).ready(function () {
 								fistDiv.append(divImg, info, divStatus, edit);
 								const postContent = $('<div>');
 								postContent.addClass('row');
-								postContent.addClass('post-content').attr({id: 'remove-c'});
+								postContent.addClass('post-content');
 								// child
 								const cntend = $('<div>');
 								cntend.addClass('col-xs-12');
-								const postI = $('<p>').text(image.description).addClass('post-text').attr({id: 'remove-t'});
-								const a1 = $('<a>').addClass('read-more').text('...more').attr({href: 'javascript:void(0);'});
-								const a2 = $('<a>').addClass('hide-more').text('...hide').attr({href: 'javascript:void(0);'});
-								cntend.append(postI);
+								// display only the first 100 chars
+								const postI = $('<p>').text(image.description.slice(0, 100)).addClass('post-text').attr({id: 'remove-t'});
+								const a1 = $('<a>').addClass('more-link').text('...more').attr({href: 'javascript:void(0);'});
+								const moreText = $('<span>').addClass('more-text').text(image.description.slice(100)).hide(); // hide the rest description
+								// append the hidden to postI
+								postI.append(moreText);
+								cntend.append(postI, a1);
 								// section append 2
-								postContent.append(cntend, a1, a2);
+								postContent.append(cntend);
 
 								const postImage = $('<div>');
 								postImage.addClass('row');
 								postImage.addClass('post-image');
 								const divImage = $('<div>');
-								divImage.addClass('col-xs-12');
+								divImage.addClass('col-xs-12').addClass('post-image');
 								const imagep = $('<img>');
 								imagep.attr({
 									src: "http://127.0.0.1:5001/api/v1/uploads/" + image.url,
@@ -240,7 +249,7 @@ $(document).ready(function () {
 
 								const ac3 = $('<div>');
 								ac3.addClass('col-xs-2');
-								const spanC3 = $('<span>').addClass('glyphicon glyphicon-remove edit-icon');
+								const spanC3 = $('<span>').addClass('glyphicon glyphicon-trash delete').data('Id', image.id);
 								ac3.append(spanC3);
 
 								postAction.append(ac1, ac2, ac3);
@@ -327,13 +336,18 @@ $(document).ready(function () {
 								const vidContent = $('<div>').addClass('row');
 								vidContent.addClass('post-content');
 								const vidtext = $('<div>').addClass('col-xs-12');
-								const vidp = $('<p>').text(video.description);
-								vidtext.append(vidp);
+								const vidp = $('<p>').text(video.description.slice(0, 100)).addClass('post-text');
+								const a1 = $('<a>').addClass('more-link').text('...more').attr({href: 'javascript:void(0);'});
+								const moreText = $('<span>').addClass('more-text').text(video.description.slice(100)).hide(); // hide the rest description
+								vidp.append(moreText);
+								vidtext.append(vidp, a1);
+
+
 								vidContent.append(vidtext); // section append2
 								//third div
 								const vida = $('<div>').addClass('row post-video');
 								const vidS = $('<div>').addClass('col-xs-12');
-								const videoP = $('<video>').addClass('img-responsive');
+								const videoP = $('<video>').addClass('img-responsive video-post');
 								videoP.attr('controls', true);
 								const source = $('<source>').attr({
 									src: "http://127.0.0.1:5001/api/v1/uploads/" + video.url,
@@ -352,7 +366,7 @@ $(document).ready(function () {
 								dispn1.append(spn1);
 								const spn2 = $('<span>').addClass('add glyphicon glyphicon-comment');
 								dispn2.append(spn2);
-								const spn3 = $('<span>').addClass('glyphicon glyphicon-remove');
+								const spn3 = $('<span>').addClass('glyphicon glyphicon-trash delete').data('Id', video.id);
 								dispn3.append(spn3);
 								actions.append(dispn1, dispn2, dispn3); // section append 4
 								const sectionVideo = $('<section>').addClass('col-lg-4 col-md-5');

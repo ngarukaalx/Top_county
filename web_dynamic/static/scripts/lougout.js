@@ -16,7 +16,9 @@ $(document).ready(function () {
 					withCredentials: true
 				},
 				success: function (response) {
-					location.reload();
+					alert('Logout succefully.');
+					window.location.href = "http://127.0.0.1:5000/home";
+
 				},
 				error: function(xhr, status, error) {
 					console.error("Failed to logout the current user", status, error);
@@ -29,6 +31,8 @@ $(document).ready(function () {
 		console.log("signclicked");
 		if ($(this).text().trim() === 'sign up') {
 			window.location.href = "http://127.0.0.1:5000/register";
+		} else {
+			 window.location.href = "http://127.0.0.1:5000/user";
 		}
 	});
 });

@@ -83,7 +83,7 @@ $(document).ready(function () {
             contentType: false,
             success: function(response) {
                 alert('Post created successfully!');
-                console.log(response);
+                window.location.reload();
             },
             error: function(xhr, status, error) {
                 console.error('Error creating post:', status, error);

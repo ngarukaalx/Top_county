@@ -33,6 +33,24 @@ body {
     background-color: transparent;
 }
 
+/*  style the post button and post */
+#post-content {
+    background-color: rgb(245, 110, 110);
+    color: #000000;
+}
+
+#mypost {
+    border: ipx solid grey;
+    border-radius: 5px;
+    padding: 15px;
+}
+#bt-close {
+    border-radius: 30px;
+}
+.btn-xs {
+    background-color: rgb(9, 9, 29);
+}
+
 /* styling jumbotron */
 #intro {
     margin-top: 14%;
@@ -68,7 +86,81 @@ body {
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 5px solid whitesmoke; /* Light gray border */
     border-radius: 7px;
+
+    /* overflow */
+    cursor: pointer;
+    max-height: 700px;
 }
+
+post-content {
+    /* added post styles */
+    position: relative;
+    padding-bottom: 30px;
+} 
+
+.post-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.read-more {
+    display: none;
+    color: blue;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 0px;
+    margin-right: 6px;
+}
+
+.hide-more {
+    display: none;
+    color: blue;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 0px;
+    margin-right: 6px;
+}
+
+.mypost-collapsed .post-text {
+    -webkit-line-clamp: 3;
+}
+
+.mypost-collapsed .read-more {
+    display: inline;
+}
+
+
+#profile {
+    display: flex;
+    align-items: center;
+}
+
+#profile #img {
+    flex: 0 0 auto;
+    margin-right: 1px; /* Adjust as needed */
+}
+
+#profile #details {
+    flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
+}
+
+#profile h6, #profile p {
+    margin: 0;
+    padding: 0;
+}
+
+/*  end of post new updates*/
 
 #pro {
     border-radius: 50%;

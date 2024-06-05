@@ -30,6 +30,12 @@
 #btn-drp {
     margin-bottom: 15px;
 }
+
+.custom-dropdown-menu li:hover {
+	background-color: rgb(161, 161, 241);
+	color: #ffffff;
+}
+
 .county-info {
     border: 3px solid whitesmoke;
     margin-top: 10%;
@@ -63,6 +69,24 @@
     color: red;
 }
 
+/*  style the post button and post */
+#post-content {
+    background-color: rgb(245, 110, 110);
+    color: #000000;
+}
+
+#mypost {
+    border: ipx solid grey;
+    border-radius: 5px;
+    padding: 15px;
+}
+#bt-close {
+    border-radius: 30px;
+}
+.btn-xs {
+    background-color: rgb(9, 9, 29);
+}
+
 /* post stuffs*/
 #mypost {
     background-color: #ffffff; /* Bright white background  */
@@ -73,7 +97,71 @@
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 5px solid whitesmoke; /* Light gray border */
     border-radius: 7px;
+    cursor: pointer;
 }
+
+.post-content {
+    /* added post styles */
+    position: relative;
+    padding-bottom: 30px;
+} 
+
+/* Ensure this CSS is included */
+.post-text {
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-content.expanded .post-text {
+    max-height: none;
+    white-space: normal;
+}
+
+.read-more {
+    display: inline;
+    color: blue;
+    cursor: pointer;
+}
+
+.hide-more {
+    display: none;
+    color: blue;
+    cursor: pointer;
+}
+
+.post-content.expanded .read-more {
+    display: none;
+}
+
+.post-content.expanded .hide-more {
+    display: inline;
+}
+
+
+#profile {
+    display: flex;
+    align-items: center;
+}
+
+#profile #img {
+    flex: 0 0 auto;
+    margin-right: 1px; /* Adjust as needed */
+}
+
+#profile #details {
+    flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
+}
+
+#profile h6, #profile p {
+    margin: 0;
+    padding: 0;
+}
+
+/*  end of post new updates*/
 .rmv {
     font-size: x-small;
     color: gray;
