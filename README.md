@@ -2,15 +2,16 @@ __TopCounty__
 Welcome to TopCounty, your go-to resource for all things related to development and leadership in Kenya. TopCounty is dedicated to providing accurate, timely, and comprehensive data, empowering residents, researchers, and policymakers to make informed decisions and foster community engagement from the ward level to the county and national levels.
 
 Table of Contents
-Introduction
-Features
-Usage
-Contributing
-License
+- [Introduction](#introduction)
+- [Features](#features)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 Contact
 
 __Introduction__
-TopCounty is designed to bridge the gap in information accessibility regarding development and leadership in Kenya. Our platform connects residents from the ward level all the way to the county and national levels, providing detailed insights into county development, leadership initiatives, policies, and accomplishments. We aim to foster a transparent and accountable environment, inspiring current and future leaders by showcasing best practices and innovative solutions that drive positive change.
+ TopCounty is designed to bridge the gap in information accessibility regarding development and leadership in Kenya. Our platform connects residents from the ward level all the way to the county and national levels, providing detailed insights into county development, leadership initiatives, policies, and accomplishments. We aim to foster a transparent and accountable environment, inspiring current and future leaders by showcasing best practices and innovative solutions that drive positive change.
 
 __Features__
 User-generated content: Users can post and share information related to county development and leadership.
@@ -22,7 +23,7 @@ Timely updates on trends and opportunities.
 Responsive design for optimal viewing on all devices.
 
 __Usage__
-Vist (www.topcounty.com) in your web browser. From there, you can explore the various features of the TopCounty platform.
+ Vist (www.topcounty.com) in your web browser. From there, you can explore the various features of the TopCounty platform.
 
 __Navbar__
 Sign Up: Allows new users to create an account.
